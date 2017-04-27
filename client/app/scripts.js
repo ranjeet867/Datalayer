@@ -372,6 +372,11 @@ app.factory("myBlogFactory", function($http) {
         // create blog
         createBlog: function(blog) {
             return $http.post("/admin/blog/create", blog);
+        },
+
+        // create blog
+        getUser: function() {
+            return $http.get("/admin/blog/user");
         }
 
     }
@@ -418,6 +423,8 @@ app.controller("ListDeleteCtrl", function($scope, $state, myBlogFactory) {
  */
 app.controller("CreateUpdateCtrl", function($scope, $state, $stateParams, myBlogFactory) {
 
+    $scope.users = {};
+
     // get blog by id if update page
     if($stateParams.id) {
         myBlogFactory.editBlog($stateParams.id).then(function(res) {
@@ -434,6 +441,11 @@ app.controller("CreateUpdateCtrl", function($scope, $state, $stateParams, myBlog
             }
         });
     };
+
+    // Get All Blogs
+    myBlogFactory.getUser().then(function(res){
+        $scope.users = res.data;
+    });
 
     // Update blog
     $scope.updateBlog = function(blog) {

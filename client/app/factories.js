@@ -25,6 +25,11 @@ app.factory("myBlogFactory", function($http) {
         // create blog
         createBlog: function(blog) {
             return $http.post("/admin/blog/create", blog);
+        },
+
+        // create blog
+        getUser: function() {
+            return $http.get("/admin/blog/user");
         }
 
     }
