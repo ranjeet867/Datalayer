@@ -35,7 +35,7 @@ router.get("/", function(req, res) {
         res.render("client/index", {
             title: "Dimitri Mikadze",
             blogs: blogs,
-            desc: "Dimitri Mikadze Personal Blog",
+            desc: "Datalayer Demo",
             url: "/"
         });
     });
@@ -49,7 +49,7 @@ router.get("/blog/programming/:name/:id", function(req, res) {
     var name = req.params.name;
     var id = req.params.id;
 
-    blog.findById(id, function(req, blog) {
+    blog.findById(id).populate('postedBy', 'name _id').exec(function(req, blog) {
        res.render("client/blog/blog", {
            title: name.split('-').join(' '),
            blog: blog,

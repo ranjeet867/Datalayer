@@ -50,6 +50,14 @@ router.get("/blogs", function(req, res) {
     });
 });
 
+router.get("/blog/user", function(req, res) {
+    User.find(function(err, users) {
+        if(err) throw(err);
+
+        res.json(users);
+    });
+});
+
 // =========================================
 //              Angular Routes
 // =========================================

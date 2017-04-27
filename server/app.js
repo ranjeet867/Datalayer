@@ -87,7 +87,7 @@ app.post('/login', passport.authenticate('local', {
     failureRedirect: '/login',
     failureFlash: true }), function(req, res) {
     if (req.body.remember) {
-        req.session.cookie.maxAge = 1000 * 60 * 3;
+        req.session.cookie.maxAge = 10000 * 60 * 3;
     } else {
         req.session.cookie.expires = false;
     }
@@ -110,7 +110,7 @@ app.get('/*', function(req, res, next) {
 
 app.use("/", require("./routes"));
 app.use("/admin", require("./routes/admin"));
-//app.use("/test", require("./routes/testUser"));
+app.use("/test", require("./routes/testUser"));
 
 var port = process.env.PORT || 3000;
 var server = app.listen(port, function() {
