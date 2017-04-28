@@ -96,7 +96,7 @@
 
             <% }); %>
 
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="col-lg-12">
                 <h2>Datalayer Instructions</h2>
                 <h4>In your browser</h4>
                 <ul>
@@ -191,7 +191,7 @@
     var dataLayer = window.dataLayer = window.dataLayer || [];
 
     <% var i = 1; blogs.forEach(function(blog) { %>
-    
+
         dataLayer.push({
             'event': 'datalayer_demo',
             'position': "<%= i++ %>",
