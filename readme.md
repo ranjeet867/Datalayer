@@ -41,7 +41,7 @@ Blog using Nodejs, Expressjs, Angularjs and Mongodb. MEAN Javascript Fullstack a
 Clone Repo
 
 ````
-git clone https://github.com/DimitriMikadze/Mean-Blog.git
+git clone https://github.com/ranjeet867/Datalayer.git
 ````
 
 Npm install dependencies

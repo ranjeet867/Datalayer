@@ -61,7 +61,7 @@
 
     <!-- Page Header -->
     <!-- Set your background image for this header on the line below. -->
-    <header class="intro-header" style="background-image: url('/img/post-bg.jpg')">
+    <header class="intro-header" style="background-image: url('https://images.unsplash.com/photo-1441311956160-78a471e0638d?dpr=2&auto=compress,format&fit=crop&w=1500&h=700')">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
@@ -174,15 +174,15 @@
         var dataLayer = window.dataLayer = window.dataLayer || [];
         dataLayer.push({
             'event': 'datalayer_demo',
-            'article_category' :  "<%= blog.category %>",
-            'article_id' :  "<%= blog._id %>",
-            'author' : "<% if(blog.postedBy){ %> <%= blog.postedBy.name %> <% } else { %>  '' <% } %>",
-            'auther_id' :  "<% if(blog.postedBy){ %> <%= blog.postedBy._id %> <% } else { %>  '' <% } %>",
-            'content_type' :  'text/html',
-            'video_present' :   "<%= blog.video %>",
-            'total_number_of_pages' :  1,
-            'current_page_number' :  1,
-            'published_dateTime' :  "<%= blog.created_at.toISOString() %>"
+            'article_category': "<%= blog.category %>",
+            'article_id': "<%= blog._id %>",
+            'author': "<%= blog.postedBy ? blog.postedBy.name : '' %>",
+            'auther_id': "<%= blog.postedBy ? blog.postedBy._id : '' %>",
+            'content_type': 'text/html',
+            'video_present': "<%= blog.video %>",
+            'total_number_of_pages': 1,
+            'current_page_number': 1,
+            'published_dateTime': "<%= blog.created_at.toISOString() %>"
         });
 
 
