@@ -83,6 +83,18 @@
                     <%- blog.content %>
 
                 </div>
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <h2>Datalayer Instructions</h2>
+                    <h4>In your browser</h4>
+                    <ul>
+                        <li>Right Click on the page </li>
+                        <li>Select Inspect Element</li>
+                        <li>Go to Console tab</li>
+                        <li>Type <code>dataLayer</code> and press enter</li>
+                    </ul>
+                    <h5 class="text-center">OR</h5>
+                    <a class="btn btn-primary text-center center-block" data-toggle="modal" data-target="#myModal">Click here to see dataLayer</a>
+                </div>
             </div>
         </div>
     </article>
@@ -125,6 +137,25 @@
             </div>
         </div>
     </footer>
+    <div id="myModal" class="modal fade in" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title">Current dataLayer Object : Details</h4>
+                </div>
+                <div class="modal-body">
+                            <pre><code id="json"></code></pre>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
 
     <!-- jQuery -->
     <script src="/vendor/jquery/jquery.min.js"></script>
@@ -138,6 +169,28 @@
 
     <!-- Theme JavaScript -->
     <script src="/js/clean-blog.min.js"></script>
+    <script>
+
+        var dataLayer = window.dataLayer = window.dataLayer || [];
+        dataLayer.push({
+            'event': 'datalayer_demo',
+            'article_category' :  "<%= blog.category %>",
+            'article_id' :  "<%= blog._id %>",
+            'author' : "<% if(blog.postedBy){ %> <%= blog.postedBy.name %> <% } else { %>  '' <% } %>",
+            'auther_id' :  "<% if(blog.postedBy){ %> <%= blog.postedBy._id %> <% } else { %>  '' <% } %>",
+            'content_type' :  'text/html',
+            'video_present' :   "<%= blog.video %>",
+            'total_number_of_pages' :  1,
+            'current_page_number' :  1,
+            'published_dateTime' :  "<%= blog.created_at.toISOString() %>"
+        });
+
+
+        var jsonString = JSON.stringify(dataLayer);
+        var jsonPretty = JSON.stringify(JSON.parse(jsonString),null,2);
+        $("#json").html(jsonPretty);
+
+    </script>
 
 </body>
 
